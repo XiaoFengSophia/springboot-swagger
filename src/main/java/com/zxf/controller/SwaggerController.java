@@ -7,7 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 @RestController
-@Api("支付服务文档接口")
+@Api(value="SwaggerController",tags= {"支付服务文档接口"})
 public class SwaggerController {
 	@PostMapping("/addUserInf")
 	@ApiOperation(value = "增加信息")

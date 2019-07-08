@@ -13,13 +13,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class WebLogAspect {
 
 	private static final Logger logger = LoggerFactory.getLogger(WebLogAspect.class);
-
-	//@Pointcut("execution(public * com.zxf.controller.*.*(..))")
+	
+	//通知在controller中多加了"s" 用的是受去掉即可，用的时候可以放开
 	@Pointcut("execution(public * com.zxf.controller.*.*(..))")
 	public void webLog() {
 	}
