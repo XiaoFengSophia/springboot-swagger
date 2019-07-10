@@ -29,7 +29,7 @@ public interface CityDao {
     
     @Insert("insert into city(id,provinceId,cityName,description) values(#{id}, #{provinceId}, #{cityName},#{description})")
     Long saveCity(City city);
-
+    
     Long updateCity(City city);
     
     @Delete("delete from city where id=#{id}")
