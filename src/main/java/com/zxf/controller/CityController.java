@@ -24,9 +24,9 @@ public class CityController {
 		return index;
 	}
 	@ApiOperation(value = "查询城市", notes = "根据id查询城市")
-	@ApiImplicitParam(name = "id", value = "城市id", required = true, dataType = "Long", paramType = "path")
+	@ApiImplicitParam(name = "id", value = "城市id", required = true, dataType = "Integer", paramType = "path")
     @GetMapping(value = "/findCityById/{id}")
-    public City findCityById(@PathVariable("id") Long id) {
+    public City findCityById(@PathVariable("id") int id) {
         return cityService.findCityById(id);
     }
 
@@ -46,7 +46,7 @@ public class CityController {
     @ApiOperation(value = "删除城市", notes = "根据id删除城市")
 	@ApiImplicitParam(name = "id", value = "城市id", required = true, dataType = "Long", paramType = "path")
     @GetMapping(value = "/deleteCity/{id}")
-    public void deleteCity(@PathVariable("id") Long id) {
+    public void deleteCity(@PathVariable("id") int id) {
         cityService.deleteCity(id);
     }
 

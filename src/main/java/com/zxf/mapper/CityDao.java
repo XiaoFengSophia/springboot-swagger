@@ -25,14 +25,14 @@ public interface CityDao {
      * @return
      */
     @Select("select * from city where id=#{id}")
-    City findById(@Param("id") Long id);
+    City findById(@Param("id") int id);
     
     @Insert("insert into city(id,provinceId,cityName,description) values(#{id}, #{provinceId}, #{cityName},#{description})")
-    Long saveCity(City city);
+    int saveCity(City city);
     
-    Long updateCity(City city);
+    int updateCity(City city);
     
     @Delete("delete from city where id=#{id}")
-    Long deleteCity(Long id);
+    int deleteCity(int id);
 
 }

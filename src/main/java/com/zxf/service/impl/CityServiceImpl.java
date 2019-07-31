@@ -26,7 +26,7 @@ public class CityServiceImpl implements CityService{
      * 如果缓存存在，从缓存中获取城市信息
      * 如果缓存不存在，从 DB 中获取城市信息，然后插入缓存
      */
-    public City findCityById(Long id) {
+    public City findCityById(int id) {
         // 从缓存中获取城市信息
         String key = "city_" + id;
         ValueOperations<String, City> operations = redisTemplate.opsForValue();
@@ -44,14 +44,14 @@ public class CityServiceImpl implements CityService{
         City city = cityDao.findById(id);
         System.out.println("从DB中获取....");
         // 插入缓存
-        operations.set(key, city, 10, TimeUnit.SECONDS);
+        operations.set(key, city, 60, TimeUnit.SECONDS);
         logger.info("CityServiceImpl.findCityById() : 城市插入缓存 >> " + city.toString());
 
         return city;
     }
 
     @Override
-    public Long saveCity(City city) {
+    public int saveCity(City city) {
         return cityDao.saveCity(city);
     }
 
@@ -61,8 +61,8 @@ public class CityServiceImpl implements CityService{
      * 如果缓存不存在，不操作
      */
     @Override
-    public Long updateCity(City city) {
-        Long ret = cityDao.updateCity(city);
+    public int updateCity(City city) {
+        int ret = cityDao.updateCity(city);
 
         // 缓存存在，删除缓存
         String key = "city_" + city.getId();
@@ -77,9 +77,9 @@ public class CityServiceImpl implements CityService{
     }
 
     @Override
-    public Long deleteCity(Long id) {
+    public int deleteCity(int id) {
 
-        Long ret = cityDao.deleteCity(id);
+        int ret = cityDao.deleteCity(id);
         // 缓存存在，删除缓存
         String key = "city_" + id;
         boolean hasKey = redisTemplate.hasKey(key);

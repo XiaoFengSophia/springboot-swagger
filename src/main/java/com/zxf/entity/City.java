@@ -10,39 +10,46 @@ public class City implements Serializable {
 	
 	private static final long serialVersiomUID = -1L;
 	
-	/**
-     * 城市编号
-     */
-    private Long id;
-
+    private int id;//城市编号
+    private int provinceId;//省份编号
+    private String cityName;//城市名称
+    private String description;//描述
+    
     /**
-     * 省份编号
+     * 无参构造方法
      */
-    private Long provinceId;
-
+    public City() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
     /**
-     * 城市名称
+     * 全参数构造方法
+     * @param id
+     * @param provinceId
+     * @param cityName
+     * @param description
      */
-    private String cityName;
+	public City(int id, int provinceId, String cityName, String description) {
+		super();
+		this.id = id;
+		this.provinceId = provinceId;
+		this.cityName = cityName;
+		this.description = description;
+	}
 
-    /**
-     * 描述
-     */
-    private String description;
-
-    public Long getId() {
+	public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getProvinceId() {
+    public int getProvinceId() {
         return provinceId;
     }
 
-    public void setProvinceId(Long provinceId) {
+    public void setProvinceId(int provinceId) {
         this.provinceId = provinceId;
     }
 
