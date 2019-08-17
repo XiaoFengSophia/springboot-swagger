@@ -1,6 +1,8 @@
 package com.zxf.controller;
 
 import java.io.File;
+import java.util.Date;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import org.slf4j.Logger;
@@ -151,7 +153,7 @@ public class MailController {
      */
     @RequestMapping("/sendTemplateMail")
     public String sendTemplateMail() {
-    	 MimeMessage message = javaMailSender.createMimeMessage();
+    	 MimeMessage message = javaMailSender.createMimeMessage();//构建一个邮件对象
         try {  
         	//创建邮件正文
             Context context = new Context();
@@ -160,12 +162,13 @@ public class MailController {
             
             //true表示需要创建一个multipart message  
             MimeMessageHelper helper = new MimeMessageHelper(message, true);  
-            helper.setFrom(sender);  
-            helper.setTo(receiver);  
-            helper.setSubject("主题：这是打酱油的程序员模板邮件");  
-            helper.setText(emailContent, true);
+            helper.setSubject("主题：这是打酱油的程序员模板邮件");  //设置邮件主题
+            helper.setFrom(sender);  //设置邮件发送者
+            helper.setTo(receiver);  //设置邮件接收者
+            helper.setSentDate(new Date()); //设置邮件发送日期
+            helper.setText(emailContent, true);//设置邮件正文
             
-            javaMailSender.send(message);  
+            javaMailSender.send(message);  //发送邮件
             logger.info("模板邮件发送成功！");  
             return "success";  
         } catch (MessagingException e) {  

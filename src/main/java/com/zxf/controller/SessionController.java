@@ -43,11 +43,11 @@ public class SessionController {
 		return city;
 	}
 	/** 
-     * @Description http://localhost:8091/login 
+     * @Description http://localhost:8091/setSession 
      * @method 
      * @return 
      */
-	@RequestMapping("/login")
+	@RequestMapping("/setSession")
 	public String login(HttpServletRequest request) {
 		request.getSession().setAttribute("zhangsan", request.getSession().getId());
 		return request.getSession().getId();
