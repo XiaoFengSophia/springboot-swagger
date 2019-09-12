@@ -21,7 +21,7 @@ public class CityController {
 	@GetMapping("/index")
 	public String Index(String index) {
 		
-		return index;
+		return "This is AppSwagger !";
 	}
 	@ApiOperation(value = "查询城市", notes = "根据id查询城市")
 	@ApiImplicitParam(name = "id", value = "城市id", required = true, dataType = "Integer", paramType = "path")
